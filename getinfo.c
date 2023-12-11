@@ -18,7 +18,7 @@ void clear_info(info_t *info)
  * @info: struct address
  * @av: arguement vector
  */
-void set_info(info_t *info, char **argv)
+void set_info(info_t *info, char **av)
 {
 	int i = 0;
 
@@ -36,7 +36,8 @@ void set_info(info_t *info, char **argv)
 			info->argv[1] = NULL;
 		}
 	}
-	for (i = 0; info->argv && info->argv[i]; i++);
+	for (i = 0; info->argv && info->argv[i]; i++)
+		;
 	info->argc = i;
 
 	replace_alias(info);

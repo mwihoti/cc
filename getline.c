@@ -8,7 +8,7 @@
  *
  * Return: bytes read
  */
-ssize_t inpput_buf(info_t *info, char **buf, size_t *len)
+ssize_t input_buf(info_t *info, char **buf, size_t *len)
 {
 	ssize_t m = 0;
 	size_t len_p = 0;
@@ -20,14 +20,14 @@ ssize_t inpput_buf(info_t *info, char **buf, size_t *len)
 		signal(SIGINT, sigintHandler);
 #if USE_GETLINE
 		m = getline(buf, &len_p, stdin);
-#else 
+#else
 		m = _getline(info, buf, &len_p);
 #endif
-		if ( m > 0)
+		if (m > 0)
 		{
 			if ((*buf)[m - 1] == '\n')
 			{
-				(*buf) [m - 1] = '\0';
+				(*buf)[m - 1] = '\0';
 				m--;
 			}
 			info->linecount_flag = 1;
@@ -53,6 +53,7 @@ ssize_t get_input(info_t *info)
 	static size_t i, j, len;
 	ssize_t m = 0;
 	char **buf_p = &(info->arg), *p;
+
 	_putchar(BUF_FLUSH);
 	m = input_buf(info, &buf, &len);
 	if (m == -1)
@@ -118,7 +119,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	ssize_t m = 0;
 	ssize_t s = 0;
 	char *p  = NULL, *new_p = NULL, *c;
-	
+
 	p = *ptr;
 	if (p && length)
 		s = *length;
