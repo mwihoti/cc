@@ -8,8 +8,8 @@
 #include <errno.h>
 #include <sys/wait.h>
 #include <limits.h>
-#include<fcnt1.h>
-#include <sys/stat>
+#include <fcntl.h>
+#include <sys/stat.h>
 #include <sys/types.h>
 
 /* read/write buffer */
@@ -106,9 +106,16 @@ typedef struct builtin
 	int (*func)(info_t *);
 } builtin_table;
 
-/*
+/*getinfo*/
+void clear_info(info_t *);
+void set_info(info_t *, char **);
+void free_info(info_t *, int);
 
-void execmd(char **argv);
+/*getline*/
+ssize_t get_input(info_t *);
+int _getline(info_t *, char **, size_t *);
+void sigintHandler(int);
+
 
 #endif
 
