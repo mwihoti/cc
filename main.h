@@ -134,6 +134,13 @@ int _mysetenv(info_t *);
 int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
 
+/*memory*/
+int bfree(void **);
+
+/*Exit*/
+char *_strncpy(char *, char *, int);
+char *_strncat(char *, char *, int);
+char *_strchr(char *, char);
 
 #endif
 
