@@ -167,6 +167,17 @@ int _strcmp(char *, char *);
 char *starts_with(const charr *, const char *);
 char *_strcat(char *, char *);
 
+/*string2*/
+char *_strcpy(char *, char *);
+char *_strdup(const char *);
+void _puts(char *);
+int _putchar(char);
+
+/*mode */
+int interactive(info_t *);
+int is_delim(char, char *);
+int _isalpha(int);
+int _atoi(char *);
 
 
 
