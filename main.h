@@ -43,7 +43,7 @@ extern char **environ;
  * @str: string
  * @next: points to the next node
  */
-typedef struct linkedlist 
+typedef struct linkedlist
 {
 	int num;
 	char *str;
@@ -126,6 +126,14 @@ int hsh(info_t *, char **);
 int find_builtin(info_t *);
 void find_cmd(info_t *);
 void fork_cmd(info_t *);
+
+/*environ.c*/
+int _myenv(info_t *);
+char *_getenv(info_t *, const char *);
+int _mysetenv(info_t *);
+int _myunsetenv(info_t *);
+int populate_env_list(info_t *);
+
 
 #endif
 
