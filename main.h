@@ -203,6 +203,14 @@ int _myexit(info_t *);
 int _mycd(info_t *);
 int _myhelp(info_t *);
 
+/*history*/
+char *get_history_files(info_t *info);
+int write_history(info_t *info);
+int read_history_list(info_t *info, char *buf, int line_count);
+int renumber_history(info_t *info);
+int build_history_list(info_t *info, char *buf, int line_count); 
+
+
 #endif
 
 

@@ -43,8 +43,27 @@ int unset_alias(info_t *info, char *str)
  */
 int set_alias(info_t *info, char *str)
 {
-	char *point = NULL;
-	char *a = NULL;
+	char *point ;
+	
+	point = _strchr(str, '=');
+	
+	if (!point)
+	return (1);
+	if (!*++point)
+		return (unset_alias(info, str));
+	unset_alias(info, str);
+	return (add_node_end(&(info->alias), str, 0) == NULL);
+}
+
+/**
+ * print_alias - prints string alias
+ * @node: node alias
+ *
+ * Return: always 0 on succes, 1 on error
+ */
+int print_alias(list_t *node)
+{
+	char *point = NULL, *a = NULL;
 
 	if (node)
 	{
