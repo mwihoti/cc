@@ -196,6 +196,12 @@ int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
 
+/* builts*/
+int _myhistory(info_t *);
+int _myalias(info_t *);
+int _myexit(info_t *);
+int _mycd(info_t *);
+int _myhelp(info_t *);
 
 #endif
 
