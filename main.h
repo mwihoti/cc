@@ -179,7 +179,15 @@ int is_delim(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
+/* free*/
+void _eputs(char *);
+int _eputchar(char);
+int _putfd(char c, int fd);
+int _putsfd(char *str, int fd);
 
+/*tokenizer */
+char **strtow(char *, char *);
+char **strtow2(char *, char);
 
 #endif
 
