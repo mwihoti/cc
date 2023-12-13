@@ -189,6 +189,14 @@ int _putsfd(char *str, int fd);
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 
+/*vars*/
+int is_chain(info_t *, char *, size_t *);
+void chaeck_chain(info_t *, char *, size_t *, size_t, size_t);
+int replace_alias(info_t *);
+int replace_vars(info_t *);
+int replace_string(char **, char *);
+
+
 #endif
 
 
