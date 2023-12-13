@@ -39,7 +39,7 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 			}
 		}
 	}
-	return (r);
+	return (m);
 }
 /**
  * get_input - gets line string
@@ -80,7 +80,7 @@ ssize_t get_input(info_t *info)
 		return (_strlen(p));
 	}
 	*buf_p = buf;
-	return (r);
+	return (m);
 }
 
 /**
@@ -126,7 +126,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	if (i ==  len)
 		i = len = 0;
 
-	m = read_buf(info, buf, &len);
+	m = reads_buf(info, buf, &len);
 	if (m == -1 || (m == 0 && len == 0))
 		return (-1);
 
@@ -156,7 +156,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
  *
  * Return: void
  */
-void sigintHandler(_attribute_((unused))int sig_num)
+void sigintHandler(__attribute__((unused))int sig_num)
 {
 	_puts("\n");
 	_puts("$ ");

@@ -99,10 +99,16 @@ void find_cmd(info_t *info)
 	{
 		info->path = path;
 		fork_cmd(info);
+	}
+	else
+	{
+		if ((interactive(info) || _getenv(info, "PATH=")
+					|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+			fork_cmd(info);
 		else if (*(info->arg) != '\n')
-		{
-			info->status = 127;
-			print_error(info, "path not found\n");
+	{
+		info->status = 127;
+		print_error(info, "path not found\n");
 		}
 	}
 }
@@ -121,7 +127,7 @@ void fork_cmd(info_t *info)
 
 	if (child_pid == -1)
 	{
-		perro("Error :");
+		perror("Error :");
 		return;
 	}
 	if (child_pid == 0)
@@ -136,7 +142,8 @@ void fork_cmd(info_t *info)
 	}
 	else
 	{
-		wait(&(info->status))
+		wait(&(info->status));
+		if (WIFEXITED(info->status))
 		{
 			info->status = WEXITSTATUS(info->status);
 			if (info->status == 126)

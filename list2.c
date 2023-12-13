@@ -40,16 +40,16 @@ char **list_to_strings(list_t *head)
 		return (NULL);
 	for (i = 0; node; node = node->next, i++)
 	{
-		string = malloc(_strlen(node->str) + 1);
+		string = malloc(_strlen(node->string) + 1);
 		if (!string)
 		{
 			for (j = 0; j < i; j++)
-				free(strs[j]);
+				free(strings[j]);
 			free(strings);
 			return (NULL);
 		}
-		string = _strcpy(str, node->str);
-		strings[i] = str;
+		string = _strcpy(string, node->string);
+		strings[i] = string;
 	}
 	strings[i]  = NULL;
 	return (strings);
@@ -65,9 +65,9 @@ size_t print_list(const list_t *p)
 {
 	size_t i = 0;
 
-	while (h)
+	while (p)
 	{
-		_puts(convert_number(h->num, 10, 0));
+		_puts(convert_number(p->num, 10, 0));
 		_putchar(':');
 		_putchar(' ');
 		_puts(p->str ? p->str : "(nil)");

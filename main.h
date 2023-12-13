@@ -164,7 +164,7 @@ char *find_path(info_t *, char *, char *);
 /*string*/
 int _strlen(char *);
 int _strcmp(char *, char *);
-char *starts_with(const charr *, const char *);
+char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
 
 /*string2*/
