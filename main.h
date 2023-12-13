@@ -133,7 +133,9 @@ char *_getenv(info_t *, const char *);
 int _mysetenv(info_t *);
 int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
-
+int _setenv(info_t *, char *, char *);
+int _unsetenv(info_t *, char *);
+char **get_environ(info_t *);
 /*memory*/
 int bfree(void **);
 
@@ -191,7 +193,7 @@ char **strtow2(char *, char);
 
 /*vars*/
 int is_chain(info_t *, char *, size_t *);
-void chaeck_chain(info_t *, char *, size_t *, size_t, size_t);
+void check_chain(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
@@ -209,7 +211,7 @@ int write_history(info_t *info);
 int read_history_list(info_t *info, char *buf, int line_count);
 int renumber_history(info_t *info);
 int build_history_list(info_t *info, char *buf, int line_count);
-
+int read_history(info_t *info);
 /*error*/
 int _erratoi(char *);
 void print_error(info_t *, char *);

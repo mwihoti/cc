@@ -40,7 +40,7 @@ char **list_to_strings(list_t *head)
 		return (NULL);
 	for (i = 0; node; node = node->next, i++)
 	{
-		string = malloc(_strlen(node->string) + 1);
+		string = malloc(_strlen(node->str) + 1);
 		if (!string)
 		{
 			for (j = 0; j < i; j++)
@@ -48,7 +48,7 @@ char **list_to_strings(list_t *head)
 			free(strings);
 			return (NULL);
 		}
-		string = _strcpy(string, node->string);
+		string = _strcpy(string, node->str);
 		strings[i] = string;
 	}
 	strings[i]  = NULL;

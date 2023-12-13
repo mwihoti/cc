@@ -25,7 +25,7 @@ int main(int ac, char **av)
 				exit(126);
 			if (errno == ENOENT)
 			{
-				_eput(av[0]);
+				_eputs(av[0]);
 				_eputs(": 0: Couldn't be opened ");
 				_eputs(av[1]);
 				_eputchar('\n');
