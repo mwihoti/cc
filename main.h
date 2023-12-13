@@ -208,7 +208,14 @@ char *get_history_files(info_t *info);
 int write_history(info_t *info);
 int read_history_list(info_t *info, char *buf, int line_count);
 int renumber_history(info_t *info);
-int build_history_list(info_t *info, char *buf, int line_count); 
+int build_history_list(info_t *info, char *buf, int line_count);
+
+/*error*/
+int _erratoi(char *);
+void print_error(info_t *, char *);
+int print_d(int, int);
+char *convert_number(long int, int, int);
+void remove_comments(char *);
 
 
 #endif
