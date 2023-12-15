@@ -1,47 +1,47 @@
 #include "main.h"
 /**
- * _myhistory - displays history list
+ * _dishistory - displays history list
  *
  * @info: structure containing arguements
  *
  * Return: always 0
  */
-int _myhistory(info_t *info)
+int _dishistory(info_t *info)
 {
 	print_list(info->history);
 	return (0);
 }
 /**
- * unset_alias - sets alias to string
+ * sets_alias - sets alias to string
  * @info: parameter struct
  * @str: string alias
  *
  * Return: always 0 on success, 1 on error
  */
-int unset_alias(info_t *info, char *str)
+int sets_alias(info_t *info, char *str)
 {
-	char *p, c;
-	int ret;
+	char *point, m;
+	int set;
 
-	p = _strchr(str, '=');
-	if (!p)
+	point = _strchr(str, '=');
+	if (!point)
 		return (1);
-	c = *p;
-	*p = 0;
-	ret = delete_node_at_index(&(info->alias),
+	m = *point;
+	*point = 0;
+	set = delete_node_at_index(&(info->alias),
 			get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
-	*p = c;
-	return (ret);
+	*point = m;
+	return (set);
 }
 
 /**
- * set_alias - sats alias to string
+ * string_alias - sets alias to string
  * @info: parameter struct
  * @str: string alias
  *
  * Return: 0 on success else 1
  */
-int set_alias(info_t *info, char *str)
+int string_alias(info_t *info, char *str)
 {
 	char *point ;
 	
@@ -50,26 +50,26 @@ int set_alias(info_t *info, char *str)
 	if (!point)
 	return (1);
 	if (!*++point)
-		return (unset_alias(info, str));
-	unset_alias(info, str);
+		return (sets_alias(info, str));
+	sets_alias(info, str);
 	return (add_node_end(&(info->alias), str, 0) == NULL);
 }
 
 /**
- * print_alias - prints string alias
+ * prints_alias - prints string alias
  * @node: node alias
  *
  * Return: always 0 on succes, 1 on error
  */
-int print_alias(list_t *node)
+int prints_alias(list_t *node)
 {
-	char *point = NULL, *a = NULL;
+	char *point = NULL, *n = NULL;
 
 	if (node)
 	{
 		point = _strchr(node->str, '=');
-		for (a = node->str; a <= point; a++)
-			_putchar(*a);
+		for (n  = node->str; n <= point; n++)
+			_putchar(*n);
 		_putchar('\'');
 		_puts(point + 1);
 		_puts("'\n");
@@ -79,16 +79,16 @@ int print_alias(list_t *node)
 }
 
 /**
- * _myalias - same as built alias
+ * build_alias - same as built alias
  * @info: structure containing potential arguements
  *
  * Return: 0 always
  */
 
-int _myalias(info_t *info)
+int build_alias(info_t *info)
 {
-	int i = 0;
-	char *p = NULL;
+	int s = 0;
+	char *point = NULL;
 	list_t *node = NULL;
 
 	if (info->argc == 1)
@@ -96,18 +96,18 @@ int _myalias(info_t *info)
 		node = info->alias;
 		while(node)
 		{
-			print_alias(node);
+			prints_alias(node);
 			node = node->next;
 		}
 		return (0);
 	}
-	for (i = 1; info->argv[i]; i++)
+	for (s = 1; info->argv[s]; s++)
 	{
-		p = _strchr(info->argv[i], '=');
-		if (p)
-			set_alias(info, info->argv[i]);
+		point = _strchr(info->argv[s], '=');
+		if (point)
+			string_alias(info, info->argv[s]);
 		else
-			print_alias(node_starts_with(info->alias, info->argv[i], '='));
+			prints_alias(node_starts_with(info->alias, info->argv[s], '='));
 	}
 	return (0);
 }

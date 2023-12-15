@@ -8,19 +8,19 @@
  */
 char *get_history_file(info_t *info)
 {
-	char *buf, *dir;
+	char *get, *directory;
 
-	dir = _getenv(info, "home=");
-	if (!dir)
+	directory = _getenviron(info, "home=");
+	if (!directory)
 		return (NULL);
-	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
-	if (!buf)
+	get = malloc(sizeof(char) * (_strlen(directory) + _strlen(HIST_FILE) + 2));
+	if (!get)
 		return (NULL);
-	buf[0] = 0;
-	_strcpy(buf, dir);
-	_strcat(buf, "/");
-	_strcat(buf, HIST_FILE);
-	return (buf);
+	get[0] = 0;
+	_strcpy(get, directory);
+	_strcat(get, "/");
+	_strcat(get, HIST_FILE);
+	return (get);
 }
 
 /**

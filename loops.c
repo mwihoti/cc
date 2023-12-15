@@ -56,14 +56,14 @@ int find_builtin(info_t *info)
 {
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
-		{"exit", _myexit},
-		{"env", _myenv},
-		{"help", _myhelp},
-		{"history", _myhistory},
-		{"setenv", _mysetenv},
-		{"unsetenv", _myunsetenv},
-		{"cd", _mycd},
-		{"alias", _myalias},
+		{"exit", _getexit},
+		{"env", _currenv},
+		{"help", _cdc},
+		{"history", _dishistory},
+		{"setenv", _currsetenv},
+		{"unsetenv", _currunsetenv},
+		{"cd", _changedcd},
+		{"alias", build_alias},
 		{NULL, NULL}
 	};
 
@@ -100,7 +100,7 @@ void find_cmd(info_t *info)
 	if (!k)
 		return;
 
-	path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
+	path = find_path(info, _getenviron(info, "PATH="), info->argv[0]);
 	if (path)
 	{
 		info->path = path;
@@ -108,7 +108,7 @@ void find_cmd(info_t *info)
 	}
 	else
 	{
-		if ((interactive(info) || _getenv(info, "PATH=")
+		if ((interactive(info) || _getenviron(info, "PATH=")
 			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 			fork_cmd(info);
 		else if (*(info->arg) != '\n')
@@ -132,20 +132,19 @@ void fork_cmd(info_t *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
 	if (child_pid == 0)
 	{
-		if (execve(info->path, info->argv, get_environ(info)) == -1)
+		if (execve(info->path, info->argv, gets_environ(info)) == -1)
 		{
 			free_info(info, 1);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: PUT ERROR FUNCTION */
+
 	}
 	else
 	{

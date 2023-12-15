@@ -128,14 +128,14 @@ void find_cmd(info_t *);
 void fork_cmd(info_t *);
 
 /*environ.c*/
-int _myenv(info_t *);
-char *_getenv(info_t *, const char *);
-int _mysetenv(info_t *);
-int _myunsetenv(info_t *);
-int populate_env_list(info_t *);
-int _setenv(info_t *, char *, char *);
-int _unsetenv(info_t *, char *);
-char **get_environ(info_t *);
+int _currenv(info_t *);
+char *_getenviron(info_t *, const char *);
+int _currsetenv(info_t *);
+int _currunsetenv(info_t *);
+int populates_environ_list(info_t *);
+int _setsenviron(info_t *, char *, char *);
+int _unsetenviron(info_t *, char *);
+char **gets_environ(info_t *);
 /*memory*/
 int bfree(void **);
 
@@ -199,11 +199,11 @@ int replace_vars(info_t *);
 int replace_string(char **, char *);
 
 /* builts*/
-int _myhistory(info_t *);
-int _myalias(info_t *);
-int _myexit(info_t *);
-int _mycd(info_t *);
-int _myhelp(info_t *);
+int _dishistory(info_t *);
+int build_alias(info_t *);
+int _getexit(info_t *);
+int _changedcd(info_t *);
+int _cdc(info_t *);
 
 /*history*/
 char *get_history_files(info_t *info);

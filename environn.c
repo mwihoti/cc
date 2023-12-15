@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * get_environ - returns string to copy
+ * gets_environ - returns string to copy
  * @info: struct containing potential  arguements
  *
  * Return: always 0
  */
-char **get_environ(info_t *info)
+char **gets_environ(info_t *info)
 {
 	if (!info->environ || info->env_changed)
 	{
@@ -18,25 +18,25 @@ char **get_environ(info_t *info)
 }
 
 /**
- * _unsetenv - remove enviroment variable
+ * _unsetenviron - remove enviroment variable
  * @info: struct containing arguements
  *
  * Return: 1 on delete else 0
  * @var: string env var
  */
-int _unsetenv(info_t *info, char *var)
+int _unsetenviron(info_t *info, char *var)
 {
 	list_t *node = info->env;
 	size_t i = 0;
-	char *p;
+	char *point;
 
 	if (!node || !var)
 		return (0);
 
 	while (node)
 	{
-		p = starts_with(node->str, var);
-		if (p && *p == '=')
+		point = starts_with(node->str, var);
+		if (point && *point == '=')
 		{
 			info->env_changed = delete_node_at_index(&(info->env), i);
 			i = 0;
@@ -49,7 +49,7 @@ int _unsetenv(info_t *info, char *var)
 	return (info->env_changed);
 }
 /**
- * _setenv - initializes variable
+ * _setsenviron - initializes variable
  *
  * @info: structure containing arguements
  *
@@ -59,7 +59,7 @@ int _unsetenv(info_t *info, char *var)
  *
  * Return: always 0
  */
-int _setenv(info_t *info, char *var, char *value)
+int _setsenviron(info_t *info, char *var, char *value)
 {
 	char *buf = NULL;
 	list_t *node;
