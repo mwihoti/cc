@@ -27,12 +27,12 @@ int _getexit(info_t *info)
 	return (-2);
 }
 /**
- * _changecd - change process directory
+ * _changedcd - change process directory
  * @info: structure containing potential arguements
  *
  * Return: Always 0
  */
-int _changecd(info_t *info)
+int _changedcd(info_t *info)
 {
 	char *s, *directory, buffer[1024];
 	int child_ret;
@@ -54,7 +54,7 @@ int _changecd(info_t *info)
 		if (!_getenviron(info, "oldpwd"))
 		{
 			_printstr(s);
-			_putscharacter('\n');
+			_writechar('\n');
 			return (1);
 			}
 			_printstr(_getenviron(info, "oldpwd=")), _writechar('\n');

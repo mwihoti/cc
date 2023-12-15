@@ -56,16 +56,16 @@ void prints_error(info_t *info, char *estr)
  */
 int prints_d(int input, int fd)
 {
-	int (*__putchars)(char) = _writechar;
+	int (*__writechar)(char) = _writechar;
 	int m, counts = 0;
 	unsigned int _abs_, current;
 
 	if (fd == STDERR_FILENO)
-		__putchars = _putscharacter;
+		__writechar = _putscharacter;
 	if (input < 0)
 	{
 		_abs_ = -input;
-		__putchars('-');
+		__writechar('-');
 		counts++;
 	}
 	else
@@ -77,12 +77,12 @@ int prints_d(int input, int fd)
 		{
 			if (_abs_ / m)
 			{
-				__putchars('0' + current / m);
+				__writechar('0' + current / m);
 				counts++;
 			}
 			current %= m;
 		}
-		__putchars('0' + current);
+		__writechar('0' + current);
 		counts++;
 
 		return (counts);

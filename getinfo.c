@@ -25,7 +25,7 @@ void sets_info(info_t *info, char **av)
 	info->fname = av[0];
 	if (info->arg)
 	{
-		info->argv = strtow(info->arg, " \t");
+		info->argv = splitstr(info->arg, " \t");
 		if (!info->arg)
 		{
 			info->argv = malloc(sizeof(char *) * 2);
@@ -40,8 +40,8 @@ void sets_info(info_t *info, char **av)
 		;
 	info->argc = m;
 
-	replace_alias(info);
-	replace_vars(info);
+	alias_token(info);
+	vars_token(info);
 }
 }
 

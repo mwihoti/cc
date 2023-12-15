@@ -26,7 +26,7 @@ void _putstr(char *str)
  *
  * Return: on success 1, -1 on error
  */
-int _putcharacter(char c)
+int _putscharacter(char c)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];

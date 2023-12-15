@@ -188,15 +188,15 @@ int _wrfd(char c, int fd);
 int _prstr(char *str, int fd);
 
 /*tokenizer */
-char **strtow(char *, char *);
-char **strtow2(char *, char);
+char **splitstr(char *, char *);
+char **splitstr2(char *, char);
 
 /*vars*/
-int is_chain(info_t *, char *, size_t *);
-void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
-int replace_vars(info_t *);
-int replace_string(char **, char *);
+int test_chain(info_t *, char *, size_t *);
+void chain_status(info_t *, char *, size_t *, size_t, size_t);
+int alias_token(info_t *);
+int vars_token(info_t *);
+int rep_string(char **, char *);
 
 /* builts*/
 int _dishistory(info_t *);

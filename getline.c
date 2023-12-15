@@ -63,10 +63,10 @@ ssize_t get_lineinput(info_t *info)
 		k =  j;
 		point = buf + k;
 
-		check_chain(info, buf, &k, j, len);
+		chain_status(info, buf, &k, j, len);
 		while (k < len)
 		{
-			if (is_chain(info, buf, &k))
+			if (test_chain(info, buf, &k))
 				break;
 			k++;
 		}

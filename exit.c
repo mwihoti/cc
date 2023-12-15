@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * *_strncpy - copy a string
+ * *_stringcpy - copy a string
  * @dest: destination of string to be copied
  * @src: source string
  * @n: characters to be copied
  *
  * Return: concated string
  */
-char *_strncpy(char *dest, char *src, int n)
+char *_stringcpy(char *dest, char *src, int n)
 {
 	int m, k;
 	char *string = dest;

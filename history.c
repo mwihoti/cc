@@ -24,13 +24,13 @@ char *get_filehistory(info_t *info)
 }
 
 /**
- * writes_historyfile - creates a file if it exist appeds file
+ * writes_filehistory - creates a file if it exist appeds file
  * @info: parameter struct
  *
  * Return: 1 on succes, else -1
  */
 
-int writes_historyfile(info_t *info)
+int writes_filehistory(info_t *info)
 {
 	ssize_t fd;
 	char *filename = get_filehistory(info);
@@ -123,12 +123,12 @@ int builds_history(info_t *info, char *buf, int line_count)
 }
 
 /**
- * renumber_list - renumbers history linked list
+ * renumbers_list - renumbers history linked list
  * @info: structure containing potential arguements
  *
  * Return: new histcount
  */
-int renumber_list(info_t *info)
+int renumbers_list(info_t *info)
 {
 	list_t *node = info->history;
 	int m = 0;
