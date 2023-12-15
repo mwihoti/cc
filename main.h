@@ -137,7 +137,7 @@ int _setsenviron(info_t *, char *, char *);
 int _unsetenviron(info_t *, char *);
 char **gets_environ(info_t *);
 /*memory*/
-int bfree(void **);
+int freesp(void **);
 
 /*Exit*/
 char *_stringcpy(char *, char *, int);
