@@ -13,13 +13,13 @@ char *get_filehistory(info_t *info)
 	directory = _getenviron(info, "home=");
 	if (!directory)
 		return (NULL);
-	gets = malloc(sizeof(char) * (_strlen(directory) + _strlen(HIST_FILE) + 2));
+	gets = malloc(sizeof(char) * (_strslength(directory) + _strslength(HIST_FILE) + 2));
 	if (!gets)
 		return (NULL);
 	gets[0] = 0;
-	_strcpy(gets, directory);
-	_strcat(gets, "/");
-	_strcat(gets, HIST_FILE);
+	_strcopy(gets, directory);
+	_strsconcate(gets, "/");
+	_strsconcate(gets, HIST_FILE);
 	return (gets);
 }
 

@@ -35,7 +35,7 @@ int _unsetenviron(info_t *info, char *var)
 
 	while (node)
 	{
-		point = starts_with(node->str, var);
+		point = start_hay(node->str, var);
 		if (point && *point == '=')
 		{
 			info->env_changed = deletes_node_index(&(info->env), m);
@@ -68,16 +68,16 @@ int _setsenviron(info_t *info, char *var, char *value)
 	if (!var || !value)
 		return (0);
 
-	buf  = malloc(_strlen(var) + _strlen(value) + 2);
+	buf  = malloc(_strslength(var) + _strslength(value) + 2);
 	if (!buf)
 		return (1);
-	_strcpy(buf, var);
-	_strcat(buf, "=");
-	_strcat(buf, value);
+	_strcopy(buf, var);
+	_strsconcate(buf, "=");
+	_strsconcate(buf, value);
 	node = info->env;
 	while (node)
 	{
-		s = starts_with(node->str, var);
+		s = start_hay(node->str, var);
 		if (s && *s == '=')
 		{
 			free(node->str);

@@ -59,7 +59,7 @@ char *cmd_path(info_t *info, char *pathstr, char *cmd)
 
 	if (!pathstr)
 		return (NULL);
-	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
+	if ((_strslength(cmd) > 2) && start_hay(cmd, "./"))
 	{
 		if (exec_cmd(info, cmd))
 			return (cmd);
@@ -70,11 +70,11 @@ char *cmd_path(info_t *info, char *pathstr, char *cmd)
 		{
 			fpath = duplicate_char(pathstr, current_pos, i);
 			if (!*fpath)
-				_strcat(fpath, cmd);
+				_strsconcate(fpath, cmd);
 			else
 			{
-				_strcat(fpath, "/");
-				_strcat(fpath, cmd);
+				_strsconcate(fpath, "/");
+				_strsconcate(fpath, cmd);
 			}
 			if (exec_cmd(info, fpath))
 				return (fpath);

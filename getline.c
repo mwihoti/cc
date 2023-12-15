@@ -54,7 +54,7 @@ ssize_t get_lineinput(info_t *info)
 	ssize_t m = 0;
 	char **bufs_p = &(info->arg), *point;
 
-	_putchar(BUF_FLUSH);
+	_writechar(BUF_FLUSH);
 	m = inputs_buffer(info, &buf, &len);
 	if (m == -1)
 		return (-1);
@@ -77,7 +77,7 @@ ssize_t get_lineinput(info_t *info)
 			info->cmd_buf_type = CMD_NORM;
 		}
 		*bufs_p = point;
-		return (_strlen(point));
+		return (_strslength(point));
 	}
 	*bufs_p = buf;
 	return (m);
@@ -158,7 +158,7 @@ int _getnextline(info_t *info, char **ptr, size_t *length)
  */
 void sign_Handler(__attribute__((unused))int sig_num)
 {
-	_puts("\n");
-	_puts("$ ");
-	_putchar(BUF_FLUSH);
+	_printstr("\n");
+	_printstr("$ ");
+	_writechar(BUF_FLUSH);
 }

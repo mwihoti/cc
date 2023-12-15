@@ -23,56 +23,56 @@ char *_strcopy(char *dest, char *src)
 }
 
 /**
- * _strdup - duplicates string
+ * _strduplicate - duplicates string
  * @str: string to duplicate
  *
  * Return: pointer to duplicated string
  */
-char *_strdup(const char *str)
+char *_strduplicate(const char *str)
 {
-	int i = 0;
-	char *dup;
+	int s = 0;
+	char *duplicate;
 
 	if (str == NULL)
 		return (NULL);
 	while (*str++)
-		i++;
-	dup = malloc(sizeof(char) * (i + 1));
-	if (!dup)
+		s++;
+	duplicate = malloc(sizeof(char) * (s + 1));
+	if (!duplicate)
 		return (NULL);
-	for (i++; i--;)
-		dup[i] = *--str;
-	return (dup);
+	for (s++; s--;)
+		duplicate[s] = *--str;
+	return (duplicate);
 }
 
 /**
- * _puts - prints an input string
+ * _printstr - prints an input string
  * @str: string to be printed
  *
  * Return: Nothing
  */
 
-void _puts(char *str)
+void _printstr(char *str)
 {
-	int i = 0;
+	int m = 0;
 
 	if (!str)
 		return;
-	while (str[i] != '\0')
+	while (str[m] != '\0')
 	{
-		_putchar(str[i]);
-		i++;
+		_writechar(str[m]);
+		m++;
 	}
 }
 
 /**
- * _putchar - writes character to be outputed
+ * _writechar - writes character to be outputed
  *
  * @c: character to print
  *
  * Return: on success i, -1 on error
  */
-int _putchar(char c)
+int _writechar(char c)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];

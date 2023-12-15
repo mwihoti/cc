@@ -32,7 +32,7 @@ void sets_info(info_t *info, char **av)
 
 			if (info->argv)
 		{
-			info->argv[0] = _strdup(info->arg);
+			info->argv[0] = _strduplicate(info->arg);
 			info->argv[1] = NULL;
 		}
 	}
@@ -71,6 +71,6 @@ void frees_info(info_t *info, int all)
 		freesp((void **)info->cmd_buf);
 		if (info->readfd > 2)
 			close(info->readfd);
-		_putchar(BUF_FLUSH);
+		_writechar(BUF_FLUSH);
 	}
 }

@@ -40,7 +40,7 @@ char **list_str(list_t *head)
 		return (NULL);
 	for (i = 0; node; node = node->next, i++)
 	{
-		string = malloc(_strlen(node->str) + 1);
+		string = malloc(_strslength(node->str) + 1);
 		if (!string)
 		{
 			for (j = 0; j < i; j++)
@@ -48,7 +48,7 @@ char **list_str(list_t *head)
 			free(strings);
 			return (NULL);
 		}
-		string = _strcpy(string, node->str);
+		string = _strcopy(string, node->str);
 		strings[i] = string;
 	}
 	strings[i]  = NULL;
@@ -67,11 +67,11 @@ size_t prints_list_t(const list_t *p)
 
 	while (p)
 	{
-		_puts(convertsnumber(p->num, 10, 0));
-		_putchar(':');
-		_putchar(' ');
-		_puts(p->str ? p->str : "(nil)");
-		_puts("\n");
+		_printstr(convertsnumber(p->num, 10, 0));
+		_writechar(':');
+		_writechar(' ');
+		_printstr(p->str ? p->str : "(nil)");
+		_printstr("\n");
 		p = p->next;
 		m++;
 	}
@@ -92,7 +92,7 @@ list_t *node_to_start(list_t *node, char *prefix, char c)
 
 	while (node)
 	{
-		s = starts_with(node->str, prefix);
+		s = start_hay(node->str, prefix);
 		if (s && ((c == -1) || (*s == c)))
 			return (node);
 		node = node->next;

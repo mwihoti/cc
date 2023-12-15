@@ -39,7 +39,7 @@ int _changecd(info_t *info)
 
 	s = getcwd(buffer, 1024);
 	if (!s)
-		_puts("Get: >>getcwd error message<<\n");
+		_printstr("Get: >>getcwd error message<<\n");
 	if (!info->argv[1])
 	{
 		directory = _getenviron(info, "home=");
@@ -49,15 +49,15 @@ int _changecd(info_t *info)
 		else
 		child_ret = chdir(directory);
 	}
-	else if (_strcmp(info->argv[1], "-") == 0)
+	else if (_strcompare(info->argv[1], "-") == 0)
 	{
 		if (!_getenviron(info, "oldpwd"))
 		{
-			_puts(s);
+			_printstr(s);
 			_putscharacter('\n');
 			return (1);
 			}
-			_puts(_getenviron(info, "oldpwd=")), _putchar('\n');
+			_printstr(_getenviron(info, "oldpwd=")), _writechar('\n');
 			child_ret =
 				chdir((directory = _getenviron(info, "oldpwd=")) ? directory : "/");
 				}
@@ -86,9 +86,9 @@ int _cdc(info_t *info)
 	char **arr;
 
 	arr = info->argv;
-	_puts("Functions not yet implemented \n");
+	_printstr("Functions not yet implemented \n");
 	if (0)
-		_puts(*arr);
+		_printstr(*arr);
 	return (0);
 }
 

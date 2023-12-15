@@ -26,7 +26,7 @@ char *_getenviron(info_t *info, const char *name)
 
 	while (node)
 	{
-		point = starts_with(node->str, name);
+		point = start_hay(node->str, name);
 		if (point && *point)
 			return (point);
 		node = node->next;

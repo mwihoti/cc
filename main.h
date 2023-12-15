@@ -170,10 +170,10 @@ char *start_hay(const char *, const char *);
 char *_strsconcate(char *, char *);
 
 /*string2*/
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
-void _puts(char *);
-int _putchar(char);
+char *_strcopy(char *, char *);
+char *_strduplicate(const char *);
+void _printstr(char *);
+int _writechar(char);
 
 /*mode */
 int if_interactive(info_t *);

@@ -16,7 +16,7 @@ int shell(info_t *info, char **av)
 	{
 		init_info(info);
 		if (if_interactive(info))
-			_puts("$ ");
+			_printstr("$ ");
 		_putscharacter(BUF_FLUSH);
 		n = get_lineinput(info);
 		if (n != -1)
@@ -27,7 +27,7 @@ int shell(info_t *info, char **av)
 				fork_thread(info);
 		}
 		else if (if_interactive(info))
-			_putchar('\n');
+			_writechar('\n');
 		frees_info(info, 0);
 	}
 	writes_filehistory(info);
@@ -68,7 +68,7 @@ int finds_command(info_t *info)
 	};
 
 	for (i = 0; builtintbl[i].type; i++)
-		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
+		if (_strcompare(info->argv[0], builtintbl[i].type) == 0)
 		{
 			info->line_count++;
 			built_cmd = builtintbl[i].func(info);

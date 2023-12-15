@@ -56,7 +56,7 @@ void prints_error(info_t *info, char *estr)
  */
 int prints_d(int input, int fd)
 {
-	int (*__putchars)(char) = _putchar;
+	int (*__putchars)(char) = _writechar;
 	int m, counts = 0;
 	unsigned int _abs_, current;
 

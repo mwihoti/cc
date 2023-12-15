@@ -69,10 +69,10 @@ int prints_alias(list_t *node)
 	{
 		point = _strchar(node->str, '=');
 		for (n  = node->str; n <= point; n++)
-			_putchar(*n);
-		_putchar('\'');
-		_puts(point + 1);
-		_puts("'\n");
+			_writechar(*n);
+		_writechar('\'');
+		_printstr(point + 1);
+		_printstr("'\n");
 		return (0);
 	}
 	return (1);
