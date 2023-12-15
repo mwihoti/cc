@@ -8,7 +8,7 @@
  */
 int _dishistory(info_t *info)
 {
-	print_list(info->history);
+	prints_list(info->history);
 	return (0);
 }
 /**
@@ -29,7 +29,7 @@ int sets_alias(info_t *info, char *str)
 	m = *point;
 	*point = 0;
 	set = deletes_node_index(&(info->alias),
-			get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
+			get_index(info->alias, node_to_start(info->alias, str, -1)));
 	*point = m;
 	return (set);
 }
@@ -107,7 +107,7 @@ int build_alias(info_t *info)
 		if (point)
 			string_alias(info, info->argv[s]);
 		else
-			prints_alias(node_starts_with(info->alias, info->argv[s], '='));
+			prints_alias(node_to_start(info->alias, info->argv[s], '='));
 	}
 	return (0);
 }
