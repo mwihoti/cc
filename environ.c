@@ -8,7 +8,7 @@
  */
 int _currenv(info_t *info)
 {
-	print_list_str(info->env);
+	prints_list(info->env);
 	return (0);
 }
 
@@ -87,7 +87,7 @@ int populates_environ_list(info_t *info)
 	size_t m;
 
 	for (m = 0; environ[m]; m++)
-		add_node_end(&node, environ[m], 0);
+		adds_node_to_end(&node, environ[m], 0);
 	info->env = node;
 	return (0);
 }

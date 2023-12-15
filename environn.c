@@ -27,7 +27,7 @@ char **gets_environ(info_t *info)
 int _unsetenviron(info_t *info, char *var)
 {
 	list_t *node = info->env;
-	size_t i = 0;
+	size_t m = 0;
 	char *point;
 
 	if (!node || !var)
@@ -38,13 +38,13 @@ int _unsetenviron(info_t *info, char *var)
 		point = starts_with(node->str, var);
 		if (point && *point == '=')
 		{
-			info->env_changed = delete_node_at_index(&(info->env), i);
-			i = 0;
+			info->env_changed = deletes_node_index(&(info->env), m);
+			m = 0;
 			node = info->env;
 			continue;
 		}
 		node = node->next;
-		i++;
+		m++;
 	}
 	return (info->env_changed);
 }
@@ -87,7 +87,7 @@ int _setsenviron(info_t *info, char *var, char *value)
 		}
 		node = node->next;
 	}
-	add_node_end(&(info->env), buf, 0);
+	adds_node_to_end(&(info->env), buf, 0);
 	free(buf);
 	info->env_changed = 1;
 	return (0);

@@ -28,7 +28,7 @@ int sets_alias(info_t *info, char *str)
 		return (1);
 	m = *point;
 	*point = 0;
-	set = delete_node_at_index(&(info->alias),
+	set = deletes_node_index(&(info->alias),
 			get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
 	*point = m;
 	return (set);
@@ -52,7 +52,7 @@ int string_alias(info_t *info, char *str)
 	if (!*++point)
 		return (sets_alias(info, str));
 	sets_alias(info, str);
-	return (add_node_end(&(info->alias), str, 0) == NULL);
+	return (adds_node_to_end(&(info->alias), str, 0) == NULL);
 }
 
 /**
