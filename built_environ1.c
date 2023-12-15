@@ -11,16 +11,16 @@ int _getexit(info_t *info)
 
 	if (info->argv[1])
 	{
-		check = _erratoi(info->argv[1]);
+		check = _erroratoi(info->argv[1]);
 		if (check == -1)
 		{
 			info->status = 2;
-			print_error(info, "Enter valid number: ");
+			prints_error(info, "Enter valid number: ");
 			_eputs(info->argv[1]);
 			_eputchar('\n');
 			return (1);
 		}
-		info->err_num = _erratoi(info->argv[1]);
+		info->err_num = _erroratoi(info->argv[1]);
 		return (-2);
 	}
 	info->err_num = -1;
@@ -65,7 +65,7 @@ int _changecd(info_t *info)
 				child_ret = chdir(info->argv[1]);
 				if (child_ret == -1)
 				{
-				print_error(info, " can't change change cd");
+				prints_error(info, " can't change change cd");
 				_eputs(info->argv[1]), _eputchar('\n');
 				}
 				else
@@ -83,12 +83,12 @@ int _changecd(info_t *info)
  */
 int _cdc(info_t *info)
 {
-	char **array;
+	char **arr;
 
-	array = info->argv;
+	arr = info->argv;
 	_puts("Functions not yet implemented \n");
 	if (0)
-		_puts(*array);
+		_puts(*arr);
 	return (0);
 }
 

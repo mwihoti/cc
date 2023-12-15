@@ -7,19 +7,19 @@
  * Return: 0 if no numbers in string, else 1
  */
 
-int _erratoi(char *s)
+int _erroratoi(char *s)
 {
-	int i = 0;
+	int m = 0;
 	unsigned long int result = 0;
 
 	if (*s == '+')
 		s++;
-	for (i = 0; s[i] != '\0'; i++)
+	for (m = 0; s[m] != '\0'; m++)
 	{
-		if (s[i] >= '0' && s[i] <= '9')
+		if (s[m] >= '0' && s[m] <= '9')
 		{
 			result *= 10;
-			result += (s[i] - '0');
+			result += (s[m] - '0');
 			if (result > INT_MAX)
 				return (-1);
 		}
@@ -30,17 +30,17 @@ int _erratoi(char *s)
 }
 
 /**
- * print_error - prints error message
+ * prints_error - prints error message
  * @info: parameter
  * @estr: string containing error
  *
  * Return: 0 if no digit on string on error -1
  */
-void print_error(info_t *info, char *estr)
+void prints_error(info_t *info, char *estr)
 {
 	_eputs(info->fname);
 	_eputs(": ");
-	print_d(info->line_count, STDERR_FILENO);
+	prints_d(info->line_count, STDERR_FILENO);
 	_eputs(": ");
 	_eputs(info->argv[0]);
 	_eputs(": ");
@@ -48,48 +48,48 @@ void print_error(info_t *info, char *estr)
 }
 
 /**
- * print_d - function prints decimal number
+ * prints_d - function prints decimal number
  * @input: the input
  * @fd: file descriptor
  *
  * Return: number of printed characters
  */
-int print_d(int input, int fd)
+int prints_d(int input, int fd)
 {
-	int (*__putchar)(char) = _putchar;
-	int i, count = 0;
+	int (*__putchars)(char) = _putchar;
+	int m, counts = 0;
 	unsigned int _abs_, current;
 
 	if (fd == STDERR_FILENO)
-		__putchar = _eputchar;
+		__putchars = _eputchar;
 	if (input < 0)
 	{
 		_abs_ = -input;
-		__putchar('-');
-		count++;
+		__putchars('-');
+		counts++;
 	}
 	else
 	{
 		_abs_ = input;
 		current = _abs_;
 	}
-		for (i = 1000000000; i > 1; i /= 10)
+		for (m = 1000000000; m > 1; m /= 10)
 		{
-			if (_abs_ / i)
+			if (_abs_ / m)
 			{
-				__putchar('0' + current / i);
-				count++;
+				__putchars('0' + current / m);
+				counts++;
 			}
-			current %= i;
+			current %= m;
 		}
-		__putchar('0' + current);
-		count++;
+		__putchars('0' + current);
+		counts++;
 
-		return (count);
+		return (counts);
 }
 
 /**
- * convert_number - converter function
+ * convertsnumber - converter function
  * @num: number
  * @base: base
  * @flags: arguement flags
@@ -97,12 +97,12 @@ int print_d(int input, int fd)
  * Return: string
  */
 
-char *convert_number(long int num, int base, int flags)
+char *convertsnumber(long int num, int base, int flags)
 {
-	static char *array;
+	static char *arr;
 	static char buffer[50];
 	char sign = 0;
-	char *ptr;
+	char *pointer;
 	unsigned long number = num;
 
 	if (!(flags & CONVERT_UNSIGNED) && num < 0)
@@ -110,35 +110,35 @@ char *convert_number(long int num, int base, int flags)
 		number = -num;
 		sign = '-';
 	}
-	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
-	ptr = &buffer[49];
-	*ptr = '\0';
+	arr = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
+	pointer = &buffer[49];
+	*pointer = '\0';
 
 	do {
-		*--ptr = array[number % base];
+		*--pointer = arr[number % base];
 		number /= base;
 	} while (number != 0);
 
 	if (sign)
-		*--ptr = sign;
-	return (ptr);
+		*--pointer = sign;
+	return (pointer);
 }
 
 /**
- * remove_comments - replaces instance of '#' to '\0'
+ * removes_comments - replaces instance of '#' to '\0'
  * @buf: address string to modify
  *
  * Return: Always 0;
  */
 
-void remove_comments(char *buf)
+void removes_comments(char *buf)
 {
-	int i;
+	int s;
 
-	for (i = 0; buf[i] != '\0'; i++)
-		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
+	for (s = 0; buf[s] != '\0'; s++)
+		if (buf[s] == '#' && (!s || buf[s - 1] == ' '))
 		{
-			buf[i] = '\0';
+			buf[s] = '\0';
 			break;
 		}
 }

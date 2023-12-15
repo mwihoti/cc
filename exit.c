@@ -10,63 +10,63 @@
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	int i, j;
+	int m, k;
 	char *string = dest;
 
-	i = 0;
-	while (src[i] != '\0' && i < n - 1)
+	m = 0;
+	while (src[m] != '\0' && m < n - 1)
 	{
-		dest[i] = src[i];
-		i++;
+		dest[m] = src[m];
+		m++;
 	}
-	if (i < n)
+	if (m < n)
 	{
-		j = i;
-		while (j < n)
+		k = m;
+		while (k < n)
 		{
-			dest[j] = '\0';
-			j++;
+			dest[k] = '\0';
+			k++;
 		}
 	}
 	return (string);
 }
 /**
- * *_strncat - concates two strings
+ * *_strconcate - concates two strings
  * @dest: first string
  * @src: second string
  * @n: amount of maximum bytes to be maximally used
  *
  * Return: concated string
  */
-char *_strncat(char *dest, char *src, int n)
+char *_strconcate(char *dest, char *src, int n)
 {
-	int i;
-	int j;
+	int m;
+	int k;
 	char *string = dest;
 
-	i = 0;
-	j = 0;
-	while (dest[i] != '\0')
-		i++;
-	while (src[j] != '\0' && j < n)
+	m = 0;
+	k = 0;
+	while (dest[m] != '\0')
+		m++;
+	while (src[k] != '\0' && k < n)
 	{
-		dest[i] = src[j];
-		i++;
-		j++;
+		dest[m] = src[k];
+		m++;
+		k++;
 	}
-	if (j < n)
-		dest[i] = '\0';
+	if (k < n)
+		dest[m] = '\0';
 	return (string);
 }
 
 /**
- * *_strchr - locates a character in a string
+ * *_strchar - locates a character in a string
  * @s: string to be parsed
  * @c: character to look for
  *
  * Return: (s) pointer to memory area
  */
-char *_strchr(char *s, char c)
+char *_strchar(char *s, char c)
 {
 	do {
 		if (*s == c)

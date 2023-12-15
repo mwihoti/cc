@@ -23,7 +23,7 @@ int sets_alias(info_t *info, char *str)
 	char *point, m;
 	int set;
 
-	point = _strchr(str, '=');
+	point = _strchar(str, '=');
 	if (!point)
 		return (1);
 	m = *point;
@@ -45,7 +45,7 @@ int string_alias(info_t *info, char *str)
 {
 	char *point ;
 	
-	point = _strchr(str, '=');
+	point = _strchar(str, '=');
 	
 	if (!point)
 	return (1);
@@ -67,7 +67,7 @@ int prints_alias(list_t *node)
 
 	if (node)
 	{
-		point = _strchr(node->str, '=');
+		point = _strchar(node->str, '=');
 		for (n  = node->str; n <= point; n++)
 			_putchar(*n);
 		_putchar('\'');
@@ -103,7 +103,7 @@ int build_alias(info_t *info)
 	}
 	for (s = 1; info->argv[s]; s++)
 	{
-		point = _strchr(info->argv[s], '=');
+		point = _strchar(info->argv[s], '=');
 		if (point)
 			string_alias(info, info->argv[s]);
 		else

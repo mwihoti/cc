@@ -140,9 +140,9 @@ char **gets_environ(info_t *);
 int bfree(void **);
 
 /*Exit*/
-char *_strncpy(char *, char *, int);
-char *_strncat(char *, char *, int);
-char *_strchr(char *, char);
+char *_stringcpy(char *, char *, int);
+char *_strconcate(char *, char *, int);
+char *_strchar(char *, char);
 
 /*list*/
 list_t *add_node(list_t **, const char *, int);
@@ -213,11 +213,11 @@ int renumber_history(info_t *info);
 int build_history_list(info_t *info, char *buf, int line_count);
 int read_history(info_t *info);
 /*error*/
-int _erratoi(char *);
-void print_error(info_t *, char *);
-int print_d(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
+int _erroratoi(char *);
+void prints_error(info_t *, char *);
+int prints_d(int, int);
+char *convertsnumber(long int, int, int);
+void removes_comments(char *);
 
 
 #endif
