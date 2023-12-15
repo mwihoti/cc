@@ -107,9 +107,9 @@ typedef struct builtin
 } builtin_table;
 
 /*getinfo*/
-void clear_info(info_t *);
-void set_info(info_t *, char **);
-void free_info(info_t *, int);
+void init_info(info_t *);
+void sets_info(info_t *, char **);
+void frees_info(info_t *, int);
 
 /*getline*/
 ssize_t get_input(info_t *);
@@ -182,10 +182,10 @@ int _isalpha(int);
 int _atoi(char *);
 
 /* free*/
-void _eputs(char *);
-int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+void _putstr(char *);
+int _putscharacter(char);
+int _wrfd(char c, int fd);
+int _prstr(char *str, int fd);
 
 /*tokenizer */
 char **strtow(char *, char *);

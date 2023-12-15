@@ -38,13 +38,13 @@ int _erroratoi(char *s)
  */
 void prints_error(info_t *info, char *estr)
 {
-	_eputs(info->fname);
-	_eputs(": ");
+	_putstr(info->fname);
+	_putstr(": ");
 	prints_d(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(estr);
+	_putstr(": ");
+	_putstr(info->argv[0]);
+	_putstr(": ");
+	_putstr(estr);
 }
 
 /**
@@ -61,7 +61,7 @@ int prints_d(int input, int fd)
 	unsigned int _abs_, current;
 
 	if (fd == STDERR_FILENO)
-		__putchars = _eputchar;
+		__putchars = _putscharacter;
 	if (input < 0)
 	{
 		_abs_ = -input;

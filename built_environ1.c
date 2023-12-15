@@ -16,8 +16,8 @@ int _getexit(info_t *info)
 		{
 			info->status = 2;
 			prints_error(info, "Enter valid number: ");
-			_eputs(info->argv[1]);
-			_eputchar('\n');
+			_putstr(info->argv[1]);
+			_putscharacter('\n');
 			return (1);
 		}
 		info->err_num = _erroratoi(info->argv[1]);
@@ -54,7 +54,7 @@ int _changecd(info_t *info)
 		if (!_getenviron(info, "oldpwd"))
 		{
 			_puts(s);
-			_putchar('\n');
+			_putscharacter('\n');
 			return (1);
 			}
 			_puts(_getenviron(info, "oldpwd=")), _putchar('\n');
@@ -66,7 +66,7 @@ int _changecd(info_t *info)
 				if (child_ret == -1)
 				{
 				prints_error(info, " can't change change cd");
-				_eputs(info->argv[1]), _eputchar('\n');
+				_putstr(info->argv[1]), _putscharacter('\n');
 				}
 				else
 				{

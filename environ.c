@@ -45,7 +45,7 @@ int _currsetenv(info_t *info)
 {
 	if (info->argc != 3)
 	{
-		_eputs("Number of arguement is wrong\n");
+		_putstr("Number of arguement is wrong\n");
 		return (1);
 	}
 	if (_setsenviron(info, info->argv[1], info->argv[2]))
@@ -66,7 +66,7 @@ int _currunsetenv(info_t *info)
 
 	if (info->argc == -1)
 	{
-		_eputs("Less number of arguements\n");
+		_putstr("Less number of arguements\n");
 		return (1);
 	}
 	for (m = 1; m <= info->argc; m++)

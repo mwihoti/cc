@@ -5,7 +5,7 @@
  * @info: struct address
  */
 
-void clear_info(info_t *info)
+void init_info(info_t *info)
 {
 	info->arg = NULL;
 	info->argv = NULL;
@@ -14,13 +14,13 @@ void clear_info(info_t *info)
 }
 
 /**
- * set_info - initializes info_t struct
+ * sets_info - initializes info_t struct
  * @info: struct address
  * @av: arguement vector
  */
-void set_info(info_t *info, char **av)
+void sets_info(info_t *info, char **av)
 {
-	int i = 0;
+	int m = 0;
 
 	info->fname = av[0];
 	if (info->arg)
@@ -36,9 +36,9 @@ void set_info(info_t *info, char **av)
 			info->argv[1] = NULL;
 		}
 	}
-	for (i = 0; info->argv && info->argv[i]; i++)
+	for (m = 0; info->argv && info->argv[m]; m++)
 		;
-	info->argc = i;
+	info->argc = m;
 
 	replace_alias(info);
 	replace_vars(info);
@@ -46,12 +46,12 @@ void set_info(info_t *info, char **av)
 }
 
 /**
- * free_info - frees info_t struct felds
+ * frees_info - frees info_t struct felds
  * @info: struct address
  * @all: free all fields
  */
 
-void free_info(info_t *info, int all)
+void frees_info(info_t *info, int all)
 {
 	ffree(info->argv);
 	info->argv = NULL;

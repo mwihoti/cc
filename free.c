@@ -1,32 +1,32 @@
 #include "main.h"
 
 /**
- * _eputs - prints string input
+ * _putstr - prints string input
  * @str: string to print
  *
  * Return: nothing
  */
 
-void _eputs(char *str)
+void _putstr(char *str)
 {
-	int i = 0;
+	int m = 0;
 
 	if (!str)
 		return;
-	while (str[i] != '\0')
+	while (str[m] != '\0')
 	{
-		_eputchar(str[i]);
-		i++;
+		_putscharacter(str[m]);
+		m++;
 	}
 }
 
 /**
- * _eputchar - writes character to stderr
+ * _putscharacter - writes character to stderr
  * @c: character to print
  *
  * Return: on success 1, -1 on error
  */
-int _eputchar(char c)
+int _putcharacter(char c)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
@@ -42,13 +42,13 @@ int _eputchar(char c)
 }
 
 /**
- * _putfd - writes character to fd
+ * _wrfd - writes character to fd
  * @c: character to print
  * @fd: file descriptor
  *
  * Return: 1 on success, -1 on error
  */
-int _putfd(char c, int fd)
+int _wrfd(char c, int fd)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
@@ -64,13 +64,13 @@ int _putfd(char c, int fd)
 }
 
 /**
- * _putsfd - prints an input string
+ * _prstr - prints an input string
  * @str: string to print
  * @fd: file descriptor
  *
  * Return: number of char put
  */
-int _putsfd(char *str, int fd)
+int _prstr(char *str, int fd)
 {
 	int i = 0;
 
@@ -78,7 +78,7 @@ int _putsfd(char *str, int fd)
 		return (0);
 	while (*str)
 	{
-		i += _putfd(*str++, fd);
+		i += _wrfd(*str++, fd);
 	}
 	return (i);
 }
