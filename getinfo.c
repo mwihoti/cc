@@ -53,7 +53,7 @@ void sets_info(info_t *info, char **av)
 
 void frees_info(info_t *info, int all)
 {
-	ffree(info->argv);
+	strfree(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
 	if (all)
@@ -66,7 +66,7 @@ void frees_info(info_t *info, int all)
 			frees_list(&(info->history));
 		if (info->alias)
 			frees_list(&(info->alias));
-		ffree(info->environ);
+		strfree(info->environ);
 			info->environ = NULL;
 		freesp((void **)info->cmd_buf);
 		if (info->readfd > 2)

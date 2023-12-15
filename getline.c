@@ -132,7 +132,7 @@ int _getnextline(info_t *info, char **ptr, size_t *length)
 
 	c = _strchar(buf + i, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
-	new_point = _realloc(point, s, s ? s + k : k + 1);
+	new_point = _memoryrealloc(point, s, s ? s + k : k + 1);
 	if (!new_point)
 		return (point ? free(point), -1 : -1);
 	if (s)

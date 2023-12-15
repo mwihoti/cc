@@ -1,24 +1,24 @@
 #include "main.h"
 
 /**
- * _strcpy - copies string
+ * _strcopy - copies string
  * @dest: destination
  * @src: source
  *
  * Return: pointer to destination
  */
-char *_strcpy(char *dest, char *src)
+char *_strcopy(char *dest, char *src)
 {
-	int i = 0;
+	int n = 0;
 
 	if (dest == src || src == 0)
 		return (dest);
-	while (src[i])
+	while (src[n])
 	{
-		dest[i] = src[i];
-		i++;
+		dest[n] = src[n];
+		n++;
 	}
-	dest[i] = 0;
+	dest[n] = 0;
 	return (dest);
 }
 

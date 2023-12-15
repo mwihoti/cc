@@ -100,7 +100,7 @@ void finds_path(info_t *info)
 	if (!q)
 		return;
 
-	path = find_path(info, _getenviron(info, "PATH="), info->argv[0]);
+	path = cmd_path(info, _getenviron(info, "PATH="), info->argv[0]);
 	if (path)
 	{
 		info->path = path;
@@ -109,7 +109,7 @@ void finds_path(info_t *info)
 	else
 	{
 		if ((if_interactive(info) || _getenviron(info, "PATH=")
-			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+			|| info->argv[0][0] == '/') && exec_cmd(info, info->argv[0]))
 			fork_thread(info);
 		else if (*(info->arg) != '\n')
 		{

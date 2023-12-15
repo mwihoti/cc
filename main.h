@@ -117,9 +117,9 @@ int _getnextline(info_t *, char **, size_t *);
 void sign_Handler(int);
 
 /*realloc*/
-char *_memset(char *, char, unsigned int);
-void ffree(char **);
-void *_realloc(void *, unsigned int, unsigned int);
+char *_memorybyte(char *, char, unsigned int);
+void strfree(char **);
+void *_memoryrealloc(void *, unsigned int, unsigned int);
 
 /*loop*/
 int shell(info_t *, char **);
@@ -159,15 +159,15 @@ list_t *node_to_start(list_t *, char *, char);
 ssize_t get_index(list_t *, list_t *);
 
 /* parser */
-int is_cmd(info_t *, char *);
-char *dup_chars(char *, int, int);
-char *find_path(info_t *, char *, char *);
+int exec_cmd(info_t *, char *);
+char *duplicate_char(char *, int, int);
+char *cmd_path(info_t *, char *, char *);
 
 /*string*/
-int _strlen(char *);
-int _strcmp(char *, char *);
-char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
+int _strslength(char *);
+int _strcompare(char *, char *);
+char *start_hay(const char *, const char *);
+char *_strsconcate(char *, char *);
 
 /*string2*/
 char *_strcpy(char *, char *);
