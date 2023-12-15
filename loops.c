@@ -10,37 +10,37 @@
 int shell(info_t *info, char **av)
 {
 	ssize_t n = 0;
-	int builtin_ret = 0;
+	int builtin_shell = 0;
 
-	while (n != -1 && builtin_ret != -2)
+	while (n != -1 && builtin_shell != -2)
 	{
 		init_info(info);
-		if (interactive(info))
+		if (if_interactive(info))
 			_puts("$ ");
 		_putscharacter(BUF_FLUSH);
 		n = get_lineinput(info);
 		if (n != -1)
 		{
 			sets_info(info, av);
-			builtin_ret = finds_command(info);
-			if (builtin_ret == -1)
+			builtin_shell = finds_command(info);
+			if (builtin_shell == -1)
 				fork_thread(info);
 		}
-		else if (interactive(info))
+		else if (if_interactive(info))
 			_putchar('\n');
 		frees_info(info, 0);
 	}
 	writes_filehistory(info);
 	frees_info(info, 1);
-	if (!interactive(info) && info->status)
+	if (!if_interactive(info) && info->status)
 		exit(info->status);
-	if (builtin_ret == -2)
+	if (builtin_shell == -2)
 	{
 		if (info->err_num == -1)
 			exit(info->status);
 		exit(info->err_num);
 	}
-	return (builtin_ret);
+	return (builtin_shell);
 }
 
 /**
@@ -54,7 +54,7 @@ int shell(info_t *info, char **av)
  */
 int finds_command(info_t *info)
 {
-	int i, built_in_cmd = -1;
+	int i, built_cmd = -1;
 	builtin_table builtintbl[] = {
 		{"exit", _getexit},
 		{"env", _currenv},
@@ -71,10 +71,10 @@ int finds_command(info_t *info)
 		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
 		{
 			info->line_count++;
-			built_in_cmd = builtintbl[i].func(info);
+			built_cmd = builtintbl[i].func(info);
 			break;
 		}
-	return (built_in_cmd);
+	return (built_cmd);
 }
 
 /**
@@ -95,7 +95,7 @@ void finds_path(info_t *info)
 		info->linecount_flag = 0;
 	}
 	for (e = 0, q = 0; info->arg[e]; e++)
-		if (!is_delim(info->arg[e], " \t\n"))
+		if (!check_delim(info->arg[e], " \t\n"))
 			q++;
 	if (!q)
 		return;
@@ -108,7 +108,7 @@ void finds_path(info_t *info)
 	}
 	else
 	{
-		if ((interactive(info) || _getenviron(info, "PATH=")
+		if ((if_interactive(info) || _getenviron(info, "PATH=")
 			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 			fork_thread(info);
 		else if (*(info->arg) != '\n')

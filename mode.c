@@ -1,23 +1,23 @@
 #include "main.h"
 
 /**
- * interactive - returns true if in interactive mode
+ *if_ interactive - returns true if in interactive mode
  * @info: struct address
  *
  * Return: 1 if interactive mode otherwise 0
  */
-int interactive(info_t *info)
+int if_interactive(info_t *info)
 {
 	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
 /**
- * is_delim - checks if its a delimeter
+ * check_delim - checks if its a delimeter
  * @c: char to check
  * @delim: delimeter string
  *
  * Return: 1 if true, 0 if false
  */
-int is_delim(char c, char *delim)
+int check_delim(char c, char *delim)
 {
 	while (*delim)
 	{
@@ -30,12 +30,12 @@ int is_delim(char c, char *delim)
 }
 
 /**
- * _isalpha - look for alphabetic character
+ * _alpha - look for alphabetic character
  * @c: character to input
  * Return: 1 if c is alphabetic, 0 otherwise
  */
 
-int _isalpha(int c)
+int _alpha(int c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);
@@ -44,35 +44,35 @@ int _isalpha(int c)
 }
 
 /**
- * _atoi - converts string to integer
+ * _stratoi - converts string to integer
  * @s: string to be converted
  *
  * Return: 0 if no numbers in string otherwise converted number
  */
 
-int _atoi(char *s)
+int _stratoi(char *s)
 {
-	int i, output;
-	int sign = 1, flag = 0;
-	unsigned int result = 0;
+	int n, out_put;
+	int signs = 1, flags = 0;
+	unsigned int results = 0;
 
-	for (i = 0; s[i] != '\0' && flag != 2; i++)
+	for (n = 0; s[n] != '\0' && flags != 2; n++)
 	{
-		if (s[i] == '-')
-			sign *= -1;
-		if (s[i] >= '0' && s[i] <= '9')
+		if (s[n] == '-')
+			signs *= -1;
+		if (s[n] >= '0' && s[n] <= '9')
 		{
-			flag = 1;
-			result *= 10;
-			result += (s[i] - '0');
+			flags = 1;
+			results *= 10;
+			results += (s[n] - '0');
 		}
-		else if (flag == 1)
-			flag = 2;
+		else if (flags == 1)
+			flags = 2;
 	}
-	if (sign == -1)
-		output = -result;
+	if (signs == -1)
+		out_put = -results;
 	else
-		output = result;
-	return (output);
+		out_put = results;
+	return (out_put);
 }
 

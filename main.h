@@ -176,10 +176,10 @@ void _puts(char *);
 int _putchar(char);
 
 /*mode */
-int interactive(info_t *);
-int is_delim(char, char *);
-int _isalpha(int);
-int _atoi(char *);
+int if_interactive(info_t *);
+int check_delim(char, char *);
+int _alpha(int);
+int _stratoi(char *);
 
 /* free*/
 void _putstr(char *);
