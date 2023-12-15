@@ -43,10 +43,10 @@ int sets_alias(info_t *info, char *str)
  */
 int string_alias(info_t *info, char *str)
 {
-	char *point ;
-	
+	char *point;
+
 	point = _strchar(str, '=');
-	
+
 	if (!point)
 	return (1);
 	if (!*++point)
@@ -94,7 +94,7 @@ int build_alias(info_t *info)
 	if (info->argc == 1)
 	{
 		node = info->alias;
-		while(node)
+		while (node)
 		{
 			prints_alias(node);
 			node = node->next;

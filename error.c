@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _erratoi - converts string to integer
+ * _erroratoi - converts string to integer
  * @s: string to be converted
  *
  * Return: 0 if no numbers in string, else 1

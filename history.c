@@ -8,16 +8,16 @@
  */
 char *get_filehistory(info_t *info)
 {
-	char *gets, *directory;
+	char *gets, *d;
 
-	directory = _getenviron(info, "home=");
-	if (!directory)
+	d = _getenviron(info, "home=");
+	if (!d)
 		return (NULL);
-	gets = malloc(sizeof(char) * (_strslength(directory) + _strslength(HIST_FILE) + 2));
+	gets = malloc(sizeof(char) * (_strslength(d) + _strslength(HIST_FILE) + 2));
 	if (!gets)
 		return (NULL);
 	gets[0] = 0;
-	_strcopy(gets, directory);
+	_strcopy(gets, d);
 	_strsconcate(gets, "/");
 	_strsconcate(gets, HIST_FILE);
 	return (gets);
