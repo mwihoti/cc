@@ -112,9 +112,9 @@ void sets_info(info_t *, char **);
 void frees_info(info_t *, int);
 
 /*getline*/
-ssize_t get_input(info_t *);
-int _getline(info_t *, char **, size_t *);
-void sigintHandler(int);
+ssize_t get_lineinput(info_t *);
+int _getnextline(info_t *, char **, size_t *);
+void sign_Handler(int);
 
 /*realloc*/
 char *_memset(char *, char, unsigned int);
@@ -206,12 +206,11 @@ int _changedcd(info_t *);
 int _cdc(info_t *);
 
 /*history*/
-char *get_history_files(info_t *info);
-int write_history(info_t *info);
-int read_history_list(info_t *info, char *buf, int line_count);
-int renumber_history(info_t *info);
-int build_history_list(info_t *info, char *buf, int line_count);
-int read_history(info_t *info);
+char *gets_filehistory(info_t *info);
+int writes_filehistory(info_t *info);
+int renumbers_list(info_t *info);
+int builds_history(info_t *info, char *buf, int line_count);
+int reads_filehistory(info_t *info);
 /*error*/
 int _erroratoi(char *);
 void prints_error(info_t *, char *);
